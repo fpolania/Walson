@@ -1,0 +1,12 @@
+@media screen and (min-width:992px){
+    .nav-item {
+    line-height:80px;
+    }
+  }
+  .nav-link{
+    color: black;
+  }
+  .navbar-toggler{
+    color: rgba(0,0,0,.5);
+    background: #0c5c94
+  }

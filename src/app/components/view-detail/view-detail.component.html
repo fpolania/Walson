@@ -1,0 +1,44 @@
+<app-menu [isActive]="'readCode'"></app-menu>
+<div class="container mt-4">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button">
+                    <strong>Detalle Del Producto</strong>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <div class="card mb-3 border-secondary">
+                        <div class="row g-6">
+                            <div class="col-md-4">
+                                <img src="../../../assets/images/3176238.png" class="img-fluid rounded-start">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body ">
+                                    <h5 class="card-title">Buscar Productos</h5>
+                                    <form [formGroup]="searchForm">
+                                        <div class="mb-3 mt-4">
+                                            <input type="text" class="form-control" formControlName="producto"
+                                                placeholder="Buscar"
+                                                [class.is-invalid]="submit && controlsSerch.producto.errors">
+                                            <div *ngIf="submit && controlsSerch.producto.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="controlsSerch.producto.errors?.required">Campo Requerido
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer mt-4">
+                                                <button type="button" (click)="searhProduct()" class="btn btn-success">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <app-tables [listHeaderTable]="this.headerTable"></app-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

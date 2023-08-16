@@ -1,0 +1,28 @@
+.card{
+    border-color: red;
+}
+.seeCard{
+    display: block;
+}
+.hideCard{
+    display: none;
+}
+canvas{
+    width: 220px !important;
+}
+.barcode-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+    overflow-x: auto;
+  }
+  .canvas {
+    flex: 50%;
+  }
+  
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }

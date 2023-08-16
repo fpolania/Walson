@@ -1,0 +1,77 @@
+<app-menu [isActive]="'genCode'"></app-menu>
+<div class="container mt-4">
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" aria-controls="panelsStayOpen-collapseOne">
+          <strong>Generar Codigos</strong>
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+        <div class="accordion-body">
+          <form class="row g-3" [formGroup]="generateForm">
+            <div class="col-md-3">
+              <label for="validationCustom01" class="form-label"><strong>Número Referencia</strong></label>
+              <input type="text" class="form-control" id="validationCustom01" formControlName="numeroRef"
+                [class.is-invalid]="submit && controls.numeroRef.errors">
+              <div *ngIf="submit && controls.numeroRef.errors" class="invalid-feedback">
+                <div *ngIf="controls.numeroRef.errors?.required">Campo Requerido
+                </div>
+                <div *ngIf="controls.numeroRef.errors?.pattern">Caracteres invalidos</div>
+                <div *ngIf="controls.numeroRef.errors?.maxlength">Maximo 10 caracteres</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom02" class="form-label"><strong>Descripción</strong></label>
+              <input type="text" class="form-control" id="validationCustom02" formControlName="descripcion"
+                [class.is-invalid]="submit && controls.descripcion.errors">
+              <div *ngIf="submit && controls.descripcion.errors" class="invalid-feedback">
+                <div *ngIf="controls.descripcion.errors?.required">Campo Requerido
+                </div>
+                <div *ngIf="controls.descripcion.errors?.pattern">Caracteres invalidos</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustomUsername" class="form-label"><strong>Cantidad Productos</strong></label>
+              <div class="input-group has-validation">
+                <input type="number" class="form-control" id="validationCustomUsername"
+                  aria-describedby="inputGroupPrepend" formControlName="cantidad"
+                  [class.is-invalid]="submit && controls.cantidad.errors">
+                <div *ngIf="submit && controls.cantidad.errors" class="invalid-feedback">
+                  <div *ngIf="controls.cantidad.errors?.required">Campo Requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom03" class="form-label"><strong>Precio</strong></label>
+              <input type="text" class="form-control" id="validationCustom03" formControlName="precio"
+                [class.is-invalid]="submit && controls.precio.errors" currencyMask>
+              <div *ngIf="submit && controls.precio.errors" class="invalid-feedback">
+                <div *ngIf="controls.precio.errors?.required">Campo Requerido
+                </div>
+                <div *ngIf="controls.precio.errors?.pattern">Campo númerico</div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark" (click)="clearForm()">Limpiar</button>
+              <button type="button" class="btn btn-success" (click)="generateBarcode()">Generar</button>
+            </div>
+          </form>
+          <div class="row mt-4" [ngClass]="[this.isGenerate === true ?'seeCard': 'hideCard']">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                  <div #barcodeCanvas class="barcode-container" id="canvas"></div>
+                  <a (click)="printBarCode()" class="btn btn-primary mt-2">
+                    <i class="bi bi-printer-fill"> Imprimir</i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
